@@ -64,10 +64,13 @@ as it requires `wrangler login`.
 ## Type-check / build / deploy
 
 ```sh
-pnpm typecheck    # wrangler types + react-router typegen + tsc
-pnpm build        # → build/client (assets) + build/server (worker)
-pnpm deploy       # react-router build && wrangler deploy
+pnpm typecheck      # wrangler types + react-router typegen + tsc
+pnpm build          # → build/client (assets) + build/server (worker)
+pnpm run deploy     # react-router build && wrangler deploy
 ```
+
+> Use `pnpm run deploy`, not `pnpm deploy` — the latter is pnpm's built-in
+> workspace-deploy command and will not run this script.
 
 `react-router build` writes `.wrangler/deploy/config.json`, so plain
 `wrangler deploy` automatically picks up the built Worker + assets and inherits
