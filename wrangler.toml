@@ -1,4 +1,5 @@
 name = "tunelab-id"
+main = "src/index.ts"
 compatibility_date = "2025-04-01"
 account_id = "988bf9e244a562e1afcb775e4bb4ebbc"
 workers_dev = true
@@ -8,6 +9,12 @@ routes = [
   { pattern = "www.tunelab.id", custom_domain = true },
 ]
 
+[[d1_databases]]
+binding = "DB"
+database_name = "nada-db"
+database_id = "a84a624a-da79-497a-8800-329859363f5b"
+
 [assets]
 directory = "./public"
 not_found_handling = "404-page"
+binding = "ASSETS"
