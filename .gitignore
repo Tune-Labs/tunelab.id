@@ -2,3 +2,9 @@ node_modules/
 .wrangler/
 .dev.vars
 .DS_Store
+
+# React Router / Vite / Cloudflare build artifacts
+/build/
+/.react-router/
+worker-configuration.d.ts
+*.tsbuildinfo

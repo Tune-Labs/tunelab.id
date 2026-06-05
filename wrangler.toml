@@ -1,5 +1,5 @@
 name = "tunelab-id"
-main = "src/index.ts"
+main = "./workers/app.ts"
 compatibility_date = "2025-04-01"
 account_id = "988bf9e244a562e1afcb775e4bb4ebbc"
 workers_dev = true
@@ -14,7 +14,7 @@ binding = "DB"
 database_name = "nada-db"
 database_id = "a84a624a-da79-497a-8800-329859363f5b"
 
-[assets]
-directory = "./public"
-not_found_handling = "404-page"
-binding = "ASSETS"
+# NOTE: Static assets (public/) are wired automatically by @cloudflare/vite-plugin
+# during `react-router build` (copied into build/client and served before the
+# Worker). Unmatched paths fall through to the Worker for SSR — so we do NOT set
+# [assets].not_found_handling here (that would shadow SSR routes with a 404 page).
