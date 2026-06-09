@@ -68,6 +68,11 @@ nav {
   color: var(--orange);
   letter-spacing: -0.02em;
 }
+.logo-text {
+  height: 20px;
+  width: auto;
+  display: block;
+}
 .nav-links {
   display: flex;
   align-items: center;

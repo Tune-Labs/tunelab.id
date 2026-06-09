@@ -10,8 +10,8 @@ const DOWNLOAD_URL = "https://go.tunelab.id/download";
 // Decorative waveform bar heights (px) — rendered deterministically so SSR and
 // client hydration match (no Math.random).
 const WAVE = [
-  6, 10, 18, 28, 42, 54, 48, 36, 24, 16, 10, 8, 14, 26, 40,
-  52, 56, 44, 32, 20, 14, 10, 18, 32, 46, 54, 48, 36, 24, 14,
+  6, 10, 18, 28, 42, 54, 48, 36, 24, 16, 10, 8, 14, 26, 40, 52, 56, 44, 32, 20,
+  14, 10, 18, 32, 46, 54, 48, 36, 24, 14,
 ];
 
 export function loader({ request }: Route.LoaderArgs) {
@@ -24,7 +24,7 @@ export function meta({ data }: Route.MetaArgs) {
   const image = `${origin}/nada/img/screen-1.jpeg`;
   const title = "Nada: Compose With Hum";
   const description =
-    "Hum, sing, or whistle — Nada transforms your voice into any instrument in real-time. Capture every musical idea before it fades away. Free on App Store.";
+    "Hum, sing, or whistle. Nada transforms your voice into any instrument in real-time. Capture every musical idea before it fades away. Free on App Store.";
 
   const tags: MetaDescriptor[] = [
     { title },
@@ -55,7 +55,7 @@ export function meta({ data }: Route.MetaArgs) {
         "@type": "MobileApplication",
         name: title,
         description:
-          "Hum, sing, or whistle — Nada transforms your voice into any instrument in real-time. Capture every musical idea before it fades away.",
+          "Hum, sing, or whistle. Nada transforms your voice into any instrument in real-time. Capture every musical idea before it fades away.",
         url,
         applicationCategory: "MusicApplication",
         operatingSystem: "iOS",
@@ -74,12 +74,13 @@ export default function Nada() {
       {/* NAV */}
       <nav>
         <Link to="/nada" className="nav-logo">
-          <LogoMark size={28} className="logo-mark" />
-          <span className="logo-word">Nada</span>
+          <img src="/nada/img/logo-text.svg" alt="Nada" className="logo-text" />
         </Link>
-        <a href={DOWNLOAD_URL} className="nav-cta">
-          <AppleIcon size={14} />
-          Download Free
+        <a href={DOWNLOAD_URL} className="download-badge nav-badge">
+          <img
+            src="/nada/img/download-appstore.svg"
+            alt="Download on the App Store"
+          />
         </a>
       </nav>
 
@@ -90,11 +91,6 @@ export default function Nada() {
         <div className="hero-ring r2" />
         <div className="hero-ring r3" />
 
-        <div className="hero-tag">
-          <span className="pulse" />
-          Voice to MIDI · Now on App Store
-        </div>
-
         <h1>
           Your voice
           <br />
@@ -102,27 +98,20 @@ export default function Nada() {
         </h1>
 
         <p className="hero-desc">
-          Hum, sing, or whistle — Nada transforms your voice into any instrument
+          Hum, sing, or whistle. Nada transforms your voice into any instrument
           in real-time. Capture every musical idea before it fades away.
         </p>
 
         <div className="hero-actions">
-          <a href={DOWNLOAD_URL} className="btn-primary">
-            <AppleIcon size={17} className="ic" />
-            Download on App Store
-          </a>
-          <a href="#features" className="btn-ghost">
-            See how it works →
+          <a href={DOWNLOAD_URL} className="download-badge">
+            <img
+              src="/nada/img/download-appstore.svg"
+              alt="Download on the App Store"
+            />
           </a>
         </div>
 
         <div className="hero-bottom">
-          <div className="app-icon">
-            <div className="icon-outer">
-              <div className="icon-inner" />
-            </div>
-            <div className="icon-dot" />
-          </div>
           <div className="waveform">
             {WAVE.map((h, i) => (
               <span
@@ -151,7 +140,9 @@ export default function Nada() {
               <br />
               in seconds
             </h2>
-            <p className="sec-sub">No keyboard. No studio. Just you, your voice, and Nada.</p>
+            <p className="sec-sub">
+              No keyboard. No studio. Just you, your voice, and Nada.
+            </p>
           </div>
           <div className="feat-grid">
             <FeatureCard
@@ -211,9 +202,19 @@ export default function Nada() {
             </p>
           </div>
           <div className="screens-wrap">
-            <PhoneFrame src="/nada/img/screen-1.jpeg" alt="Nada multi-track view" />
-            <PhoneFrame src="/nada/img/screen-2.jpeg" alt="Nada chords view" mid />
-            <PhoneFrame src="/nada/img/screen-3.jpeg" alt="Nada volume setting" />
+            <PhoneFrame
+              src="/nada/img/screen-1.jpeg"
+              alt="Nada multi-track view"
+            />
+            <PhoneFrame
+              src="/nada/img/screen-2.jpeg"
+              alt="Nada chords view"
+              mid
+            />
+            <PhoneFrame
+              src="/nada/img/screen-3.jpeg"
+              alt="Nada volume setting"
+            />
           </div>
           <div className="screen-labels">
             <span>Multi-track studio</span>
@@ -235,9 +236,21 @@ export default function Nada() {
             </h2>
           </div>
           <div className="steps">
-            <Step num="01" title="Hum your idea" body="Open Nada, pick your key and scale, then sing or hum the melody in your head. Nada detects your pitch in real-time." />
-            <Step num="02" title="Choose your instrument" body="Hear your voice as a piano, synth, guitar, or bass instantly. Layer beats and harmonies to build a full composition." />
-            <Step num="03" title="Export & produce" body="Send your project to any DAW as standard MIDI, or share an audio mix — ready for your next production session." />
+            <Step
+              num="01"
+              title="Hum your idea"
+              body="Open Nada, pick your key and scale, then sing or hum the melody in your head. Nada detects your pitch in real-time."
+            />
+            <Step
+              num="02"
+              title="Choose your instrument"
+              body="Hear your voice as a piano, synth, guitar, or bass instantly. Layer beats and harmonies to build a full composition."
+            />
+            <Step
+              num="03"
+              title="Export & produce"
+              body="Send your project to any DAW as standard MIDI, or share an audio mix — ready for your next production session."
+            />
           </div>
         </div>
       </section>
@@ -252,7 +265,10 @@ export default function Nada() {
               <br />
               Go further with Pro.
             </h2>
-            <p className="sec-sub">Nada is free to download. Unlock everything with a Pro subscription.</p>
+            <p className="sec-sub">
+              Nada is free to download. Unlock everything with a Pro
+              subscription.
+            </p>
           </div>
           <div className="price-grid">
             <div className="price-card">
@@ -274,7 +290,9 @@ export default function Nada() {
               <div className="pro-badge">Most Popular</div>
               <div className="tier-name">Pro</div>
               <div className="price-val">Rp 129rb</div>
-              <div className="price-period">per month &nbsp;·&nbsp; or Rp 1,299rb / year</div>
+              <div className="price-period">
+                per month &nbsp;·&nbsp; or Rp 1,299rb / year
+              </div>
               <div className="divider" />
               <ul className="feat-list">
                 <PlanItem>Everything in Free</PlanItem>
@@ -302,32 +320,45 @@ export default function Nada() {
             in your <span className="accent">head.</span>
           </h2>
           <p>Nada is free to download. Your next song is already in you.</p>
-          <a href={DOWNLOAD_URL} className="btn-primary">
-            <AppleIcon size={17} className="ic" />
-            Download Free on App Store
+          <a href={DOWNLOAD_URL} className="download-badge">
+            <img
+              src="/nada/img/download-appstore.svg"
+              alt="Download on the App Store"
+            />
           </a>
         </div>
       </section>
 
       {/* FOOTER */}
       <footer>
-        <Link to="/nada" className="foot-logo">
-          <LogoMark size={28} className="logo-mark" />
-          <span className="logo-word">Nada</span>
-        </Link>
-        <p>© 2026 tunelab.id</p>
-        <div className="foot-links">
-          <Link to="/nada/terms-of-use.html">Terms</Link>
-          <Link to="/nada/privacy-policy.html">Privacy</Link>
-          <Link to="/blog">Blog</Link>
-          <a href={DOWNLOAD_URL}>App Store</a>
+        <div className="foot-left">
+          <Link to="/nada" className="foot-logo">
+            <LogoMark size={28} className="logo-mark" />
+          </Link>
+        </div>
+        <div className="foot-copy">© 2026 tunelab.id</div>
+        <div className="foot-right">
+          <div className="foot-links">
+            <Link to="/nada/terms-of-use.html">Terms</Link>
+            <Link to="/nada/privacy-policy.html">Privacy</Link>
+            <Link to="/blog">Blog</Link>
+            <a href={DOWNLOAD_URL}>App Store</a>
+          </div>
         </div>
       </footer>
     </div>
   );
 }
 
-function FeatureCard({ title, body, icon }: { title: string; body: string; icon: React.ReactNode }) {
+function FeatureCard({
+  title,
+  body,
+  icon,
+}: {
+  title: string;
+  body: string;
+  icon: React.ReactNode;
+}) {
   return (
     <div className="feat-card">
       <div className="feat-icon">{icon}</div>
@@ -337,7 +368,15 @@ function FeatureCard({ title, body, icon }: { title: string; body: string; icon:
   );
 }
 
-function PhoneFrame({ src, alt, mid }: { src: string; alt: string; mid?: boolean }) {
+function PhoneFrame({
+  src,
+  alt,
+  mid,
+}: {
+  src: string;
+  alt: string;
+  mid?: boolean;
+}) {
   return (
     <div className={mid ? "phone-frame phone-mid" : "phone-frame"}>
       <div className="phone-notch" />
@@ -348,7 +387,15 @@ function PhoneFrame({ src, alt, mid }: { src: string; alt: string; mid?: boolean
   );
 }
 
-function Step({ num, title, body }: { num: string; title: string; body: string }) {
+function Step({
+  num,
+  title,
+  body,
+}: {
+  num: string;
+  title: string;
+  body: string;
+}) {
   return (
     <div className="step">
       <div className="step-num">{num}</div>

@@ -14,7 +14,7 @@ export function Nav({ active }: { active?: NavActive }) {
     <nav>
       <Link to="/nada" className="nav-logo">
         <LogoMark size={28} />
-        <span className="logo-word">Nada</span>
+        <img src="/nada/img/logo-text.svg" alt="Nada" className="logo-text" />
       </Link>
       <div className="nav-links">
         <Link to="/nada" className={active === "nada" ? "active" : undefined}>

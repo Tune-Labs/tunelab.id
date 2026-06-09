@@ -8,3 +8,4 @@ node_modules/
 /.react-router/
 worker-configuration.d.ts
 *.tsbuildinfo
+.DS_Store
