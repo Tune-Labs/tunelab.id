@@ -8,6 +8,7 @@ export default [
   route("nada/support.html", "routes/support.tsx"),    // /nada/support.html
   route("blog", "routes/blog.tsx"),                    // /blog                   → SSR list
   route("blog/article/:slug", "routes/article.tsx"),   // /blog/article/:slug     → SSR detail
+  route("unsubscribe", "routes/unsubscribe.tsx"),      // /unsubscribe?token=…    → email opt-out
   route("api/posts", "routes/api.posts.tsx"),          // /api/posts              → JSON list
   route("api/posts/:slug", "routes/api.posts.$slug.tsx"), // /api/posts/:slug     → JSON detail
   route("sitemap.xml", "routes/sitemap.ts"),           // /sitemap.xml
