@@ -14,6 +14,11 @@ binding = "DB"
 database_name = "nada-db"
 database_id = "a84a624a-da79-497a-8800-329859363f5b"
 
+# ── Secrets (set via `wrangler secret put`) ─────────────
+# UNSUBSCRIBE_SECRET → HMAC key for /unsubscribe tokens. MUST be identical to
+#                      the UNSUBSCRIBE_SECRET on the dash.tunelab.id worker,
+#                      which signs the tokens this worker verifies.
+
 # NOTE: Static assets (public/) are wired automatically by @cloudflare/vite-plugin
 # during `react-router build` (copied into build/client and served before the
 # Worker). Unmatched paths fall through to the Worker for SSR — so we do NOT set
