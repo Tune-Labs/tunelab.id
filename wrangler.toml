@@ -14,8 +14,18 @@ binding = "DB"
 database_name = "nada-db"
 database_id = "a84a624a-da79-497a-8800-329859363f5b"
 
+# ── Cloudflare Email Service (outbound send) ─────────────
+# Sends the waitlist confirmation email (the /nada/android "notify me" signup).
+# Same sending domain (tunelab.id) as the dashboard's email-blast worker, which
+# is already onboarded in CF (Compute → Email Service → Email Sending) so SPF/
+# DKIM/DMARC are in place and EMAIL.send() can reach any recipient.
+[[send_email]]
+name = "EMAIL"
+
 # ── Secrets (set via `wrangler secret put`) ─────────────
-# UNSUBSCRIBE_SECRET → HMAC key for /unsubscribe tokens. MUST be identical to
+# UNSUBSCRIBE_SECRET → HMAC key for /unsubscribe tokens AND the waitlist
+#                      confirm/unsubscribe tokens (reused, see
+#                      app/lib/waitlist-token.server.ts). MUST be identical to
 #                      the UNSUBSCRIBE_SECRET on the dash.tunelab.id worker,
 #                      which signs the tokens this worker verifies.
 
