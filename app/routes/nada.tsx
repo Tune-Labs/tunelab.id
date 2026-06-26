@@ -1,8 +1,8 @@
-import { Link, type MetaDescriptor } from "react-router";
+import { type MetaDescriptor } from "react-router";
 
 import type { Route } from "./+types/nada";
 import { siteOrigin } from "~/lib/site";
-import { AppleIcon, LogoMark } from "~/components/icons";
+import { Nav, Footer } from "~/components/SiteChrome";
 import "~/styles/nada.css";
 
 const DOWNLOAD_URL = "https://go.tunelab.id/download";
@@ -70,20 +70,9 @@ export function meta({ data }: Route.MetaArgs) {
 
 export default function Nada() {
   return (
-    <div className="nada-page">
-      {/* NAV */}
-      <nav>
-        <Link to="/nada" className="nav-logo">
-          <img src="/nada/img/logo-text.svg" alt="Nada" className="logo-text" />
-        </Link>
-        <a href={DOWNLOAD_URL} className="download-badge nav-badge">
-          <img
-            src="/nada/img/download-appstore.svg"
-            alt="Download on the App Store"
-          />
-        </a>
-      </nav>
-
+    <>
+      <Nav active="nada" />
+      <div className="nada-page">
       {/* HERO */}
       <section className="hero">
         <div className="hero-glow" />
@@ -329,24 +318,9 @@ export default function Nada() {
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer>
-        <div className="foot-left">
-          <Link to="/nada" className="foot-logo">
-            <LogoMark size={28} className="logo-mark" />
-          </Link>
-        </div>
-        <div className="foot-copy">© 2026 tunelab.id</div>
-        <div className="foot-right">
-          <div className="foot-links">
-            <Link to="/nada/terms-of-use.html">Terms</Link>
-            <Link to="/nada/privacy-policy.html">Privacy</Link>
-            <Link to="/blog">Blog</Link>
-            <a href={DOWNLOAD_URL}>App Store</a>
-          </div>
-        </div>
-      </footer>
-    </div>
+      </div>
+      <Footer />
+    </>
   );
 }
 
