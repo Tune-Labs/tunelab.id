@@ -6,9 +6,13 @@ export default [
   route("nada/terms-of-use.html", "routes/terms.tsx"), // /nada/terms-of-use.html
   route("nada/privacy-policy.html", "routes/privacy.tsx"), // /nada/privacy-policy.html
   route("nada/support.html", "routes/support.tsx"),    // /nada/support.html
+  route("nada/coming-soon", "routes/coming-soon.tsx"), // /nada/coming-soon       → platform-aware "coming soon" + waitlist
+  route("nada/android", "routes/nada.android.tsx"),    // /nada/android           → redirect → coming-soon?platform=android
   route("blog", "routes/blog.tsx"),                    // /blog                   → SSR list
   route("blog/article/:slug", "routes/article.tsx"),   // /blog/article/:slug     → SSR detail
-  route("unsubscribe", "routes/unsubscribe.tsx"),      // /unsubscribe?token=…    → email opt-out
+  route("unsubscribe", "routes/unsubscribe.tsx"),      // /unsubscribe?token=…    → email opt-out (users)
+  route("waitlist/confirm", "routes/waitlist.confirm.tsx"),         // /waitlist/confirm?token=…      → waitlist double-opt-in
+  route("waitlist/unsubscribe", "routes/waitlist.unsubscribe.tsx"), // /waitlist/unsubscribe?token=…  → waitlist opt-out
   route("api/posts", "routes/api.posts.tsx"),          // /api/posts              → JSON list
   route("api/posts/:slug", "routes/api.posts.$slug.tsx"), // /api/posts/:slug     → JSON detail
   route("sitemap.xml", "routes/sitemap.ts"),           // /sitemap.xml
