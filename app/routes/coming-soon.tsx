@@ -1,5 +1,5 @@
 import { env } from "cloudflare:workers";
-import { type MetaDescriptor, Form, Link, useSearchParams } from "react-router";
+import { type MetaDescriptor, Form, Link, useNavigation, useSearchParams } from "react-router";
 import { Footer, Nav } from "~/components/SiteChrome";
 import { type Locale, otherLocale, pickLocale } from "~/lib/locale";
 import {
@@ -31,6 +31,7 @@ type Strings = {
 	// shared form + chrome
 	placeholder: string;
 	submit: string;
+	submitting: string;
 	note: string;
 	successHeading: string;
 	successBody: (email: string) => React.ReactNode;
@@ -58,6 +59,7 @@ const COPY: Record<Locale, Strings> = {
 	id: {
 		placeholder: "kamu@email.com",
 		submit: "Beri tahu saya",
+		submitting: "Mengirim…",
 		note: "Kami cuma kirim email saat sudah siap. Tanpa spam.",
 		successHeading: "Cek email kamu",
 		successBody: (email) => (
@@ -87,6 +89,7 @@ const COPY: Record<Locale, Strings> = {
 	en: {
 		placeholder: "you@email.com",
 		submit: "Notify me",
+		submitting: "Sending…",
 		note: "We'll only email you when it's ready. No spam.",
 		successHeading: "Check your inbox",
 		successBody: (email) => (
@@ -217,6 +220,10 @@ function AppStoreBadge() {
 
 export default function ComingSoon({ loaderData, actionData }: Route.ComponentProps) {
 	const [params] = useSearchParams();
+	const navigation = useNavigation();
+	// True while this form's POST is in flight — used to disable the submit
+	// button so a row isn't double-inserted (and no duplicate confirmation email).
+	const submitting = navigation.state === "submitting" && navigation.formMethod === "POST";
 	const locale: Locale = actionData?.locale ?? loaderData.locale;
 	const platform: Platform = actionData?.platform ?? loaderData.platform;
 	const t = COPY[locale];
@@ -298,8 +305,13 @@ export default function ComingSoon({ loaderData, actionData }: Route.ComponentPr
 											aria-label={t.placeholder}
 											className="waitlist-input"
 										/>
-										<button type="submit" className="btn-primary">
-											{t.submit}
+										<button
+											type="submit"
+											className="btn-primary"
+											disabled={submitting}
+											aria-busy={submitting}
+										>
+											{submitting ? t.submitting : t.submit}
 										</button>
 									</Form>
 

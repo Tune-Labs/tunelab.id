@@ -354,6 +354,14 @@
   box-shadow: 0 0 0 3px var(--orange-glow);
 }
 .nada-page .waitlist-form .btn-primary { border: none; cursor: pointer; white-space: nowrap; }
+.nada-page .btn-primary:disabled,
+.nada-page .btn-primary:disabled:hover {
+  opacity: 0.6;
+  cursor: progress;
+  transform: none;
+  background: var(--orange);
+  box-shadow: 0 8px 30px rgba(255, 85, 0, 0.22);
+}
 .nada-page .waitlist-error {
   color: #ff7a5c;
   font-size: 0.85rem;
