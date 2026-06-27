@@ -50,7 +50,7 @@ export function platformLabel(p: Platform, locale: "id" | "en"): string {
 		case "ios":
 			return "iOS";
 		case "macos":
-			return "macOS";
+			return "iPad";
 		case "android":
 			return "Android";
 		case "windows":
