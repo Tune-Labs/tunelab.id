@@ -7,6 +7,7 @@
  * dashboard's email-blast worker.
  */
 
+import { recordEmailSend } from "./email-usage.server";
 import { type Locale } from "./locale";
 import { type Platform, platformLabel } from "./platform";
 import { signWaitlistToken } from "./waitlist-token.server";
@@ -167,4 +168,6 @@ export async function sendWaitlistConfirmation(
 		html: renderHtml(t, confirmUrl),
 		text: renderText(t, confirmUrl),
 	});
+	// Count this send toward the dashboard email meter (best-effort; never throws).
+	await recordEmailSend(env.DB, "waitlist_confirm");
 }
