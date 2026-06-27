@@ -6,6 +6,7 @@ export default [
   route("nada/terms-of-use.html", "routes/terms.tsx"), // /nada/terms-of-use.html
   route("nada/privacy-policy.html", "routes/privacy.tsx"), // /nada/privacy-policy.html
   route("nada/support.html", "routes/support.tsx"),    // /nada/support.html
+  route("nada/contact.html", "routes/contact.tsx"),    // /nada/contact.html      → contact us
   route("nada/coming-soon", "routes/coming-soon.tsx"), // /nada/coming-soon       → platform-aware "coming soon" + waitlist
   route("nada/android", "routes/nada.android.tsx"),    // /nada/android           → redirect → coming-soon?platform=android
   route("blog", "routes/blog.tsx"),                    // /blog                   → SSR list

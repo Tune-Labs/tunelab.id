@@ -22,6 +22,7 @@ export async function loader({ request }: Route.LoaderArgs) {
     "/nada/terms-of-use.html",
     "/nada/privacy-policy.html",
     "/nada/support.html",
+    "/nada/contact.html",
   ];
 
   const entries = [

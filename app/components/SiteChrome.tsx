@@ -10,7 +10,7 @@ const DOWNLOAD_URL = "https://go.tunelab.id/download";
 // client-side transitions + prefetch; the download link is an external redirect,
 // so it stays a plain <a>.
 
-export type NavActive = "nada" | "blog" | "privacy" | "terms";
+export type NavActive = "nada" | "blog" | "privacy" | "terms" | "contact";
 
 export function Nav({ active }: { active?: NavActive } = {}) {
   const [open, setOpen] = useState(false);
@@ -60,6 +60,13 @@ export function Nav({ active }: { active?: NavActive } = {}) {
           >
             Terms
           </Link>
+          <Link
+            to="/nada/contact.html"
+            className={active === "contact" ? "active" : undefined}
+            onClick={close}
+          >
+            Contact
+          </Link>
         </div>
         <a
           href={DOWNLOAD_URL}
@@ -90,6 +97,7 @@ export function Footer() {
           <Link to="/nada/terms-of-use.html">Terms</Link>
           <Link to="/nada/privacy-policy.html">Privacy</Link>
           <Link to="/blog">Blog</Link>
+          <Link to="/nada/contact.html">Contact</Link>
           <a href={DOWNLOAD_URL}>App Store</a>
         </div>
       </div>
